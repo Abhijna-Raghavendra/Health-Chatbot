@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from routes.chat import chat
 from routes.signin import signin
 from routes.signup import signup
@@ -19,7 +19,11 @@ def signup():
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    return chat()
+    # data = request.form
+    # m = data.to_dict()['message']
+    # response = chat(m)
+    response  = 'i work'
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

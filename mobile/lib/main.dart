@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/screens/chat.dart';
+import 'package:mobile/screens/landing.dart';
+import 'package:mobile/screens/signup.dart';
+import 'package:mobile/screens/home.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Health-Chatbot',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-        useMaterial3: true,
-      ),
-      home: const Text('Health-Chatbot'),
-    );
-  }
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    ScreenUtilInit(
+        designSize: const Size(412, 732),
+        builder: (BuildContext context, child) => MaterialApp(
+              theme: ThemeData(
+                fontFamily: 'UbuntuMono',
+                useMaterial3: true,
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: Colors.white60,
+                  brightness: Brightness.dark,
+                ),
+              
+              ),
+              routes: {
+                //'/': (context) => const LandingScreen(),
+                '/signup': (context) => const SignupScreen(),
+                '/home': (context) => const HomeScreen(),
+                '/': (context) => const ChatScreen(),
+              },
+            )),
+  );
 }
