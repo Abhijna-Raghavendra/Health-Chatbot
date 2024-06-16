@@ -14,6 +14,9 @@ Future main() async {
               theme: ThemeData(
                 fontFamily: 'UbuntuMono',
                 useMaterial3: true,
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white12,
+                ),
                 colorScheme: ColorScheme.fromSeed(
                   seedColor: Colors.white60,
                   brightness: Brightness.dark,

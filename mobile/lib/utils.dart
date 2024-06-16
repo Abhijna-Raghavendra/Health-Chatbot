@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 dynamic getUri(String route){
-  return Uri.parse('http://192.168.1.156:5000/${route}');
+  return Uri.parse('http://192.168.68.103:5000/${route}');
 }
 
 Future<String> chat(String message) async {

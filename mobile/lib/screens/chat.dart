@@ -62,8 +62,10 @@ class _ChatScreenState extends State<ChatScreen> {
         onSendPressed: _handleSendPressed,
         user: _users[0],
         theme: DefaultChatTheme(
-          primaryColor: Colors.lightBlueAccent,
-          inputBorderRadius: BorderRadius.all(Radius.circular(18.r)),
+          backgroundColor: Colors.transparent,
+          primaryColor: Colors.white12,
+          //inputBorderRadius: BorderRadius.all(Radius.circular(18.r)),
+          inputBackgroundColor: Colors.white12,
           inputMargin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.h),
         ),
       ),

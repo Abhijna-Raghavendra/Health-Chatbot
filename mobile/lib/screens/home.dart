@@ -8,26 +8,42 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Healthcare Chatbot'),
+      ),
       body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 8.w),
-              child: SizedBox(
-                width: 300.w,
-                child: ElevatedButton(onPressed: (){
-                  Navigator.pushReplacementNamed(context, '/chat');
-                }, child: Text(
-                  'Chat with Bot',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp,
-                  ),
-                  )),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text(
+                'User\'s Medical History:',
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
-            ),
-          ],
+              SizedBox(height: 10.h),
+              Text(
+                'medicalHistory',
+                style: TextStyle(fontSize: 16.sp),
+              ),
+              SizedBox(height: 20.h),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/chat');
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(12.r),
+                  child: Text(
+                    'Chat with our Healthcare Bot',
+                    style: TextStyle(fontSize: 18.sp),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ));
+      ),
+    );
   }
 }
