@@ -6,7 +6,9 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import MongoDBAtlasVectorSearch
 from pymongo import MongoClient
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 def load_pdf(data_dir):
     loader = DirectoryLoader(data_dir, glob="*.pdf", loader_cls=PyPDFLoader)
     documents = loader.load()
@@ -36,9 +38,8 @@ def store_in_mongodb(text_chunks, embeddings, collection):
     vector_search = MongoDBAtlasVectorSearch.from_documents(text_chunks, embeddings, collection=collection)
     return vector_search
 
-if __name__ == "__main__":
-    extracted_data = load_pdf("data/")
-    text_chunks = text_split(extracted_data)
-    embeddings = setup_embeddings()
-    collection = setup_mongodb()
-    vector_search = store_in_mongodb(text_chunks, embeddings, collection)
+extracted_data = load_pdf("data/")
+text_chunks = text_split(extracted_data)
+embeddings = setup_embeddings()
+collection = setup_mongodb()
+vector_search = store_in_mongodb(text_chunks, embeddings, collection)
