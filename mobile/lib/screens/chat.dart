@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/utils/get_response.dart';
+import 'package:mobile/utils.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -72,6 +72,6 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 Future<String> response(String message) async {
-  String r = await getResponse(message);
+  String r = await chat(message);
   return r;
 }

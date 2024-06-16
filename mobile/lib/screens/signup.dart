@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:mobile/utils.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -12,6 +12,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController pswdController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   DateTime? dob; 
   String gender = '';
@@ -29,9 +31,6 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Signup'),
-      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.r),
         child: Column(
@@ -42,6 +41,14 @@ class _SignupScreenState extends State<SignupScreen> {
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10.h),
+            TextFormField(
+              controller: usernameController,
+              decoration: const InputDecoration(labelText: 'Username'),
+            ),
+            TextFormField(
+              controller: pswdController,
+              decoration: const InputDecoration(labelText: 'Password'),
+            ),
             TextFormField(
               controller: nameController,
               decoration: const InputDecoration(labelText: 'Name'),
@@ -135,36 +142,24 @@ class _SignupScreenState extends State<SignupScreen> {
               decoration: const InputDecoration(labelText: 'Alcohol Consumption'),
             ),
             SizedBox(height: 20.h),
-            Text(
-              'Current Health Status',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10.h),
-            TextFormField(
-              controller: currentHealthController,
-              decoration: const InputDecoration(labelText: 'Current Symptoms/ Health Issues'),
-            ),
-            SizedBox(height: 20.sp),
-            Text(
-              'Lifestyle',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10.h),
-            TextFormField(
-              controller: dietController,
-              decoration: const InputDecoration(labelText: 'Diet'),
-            ),
-            TextFormField(
-              controller: exerciseController,
-              decoration: const InputDecoration(labelText: 'Exercise Habits'),
-            ),
-            SizedBox(height: 20.h),
             ElevatedButton(
               onPressed: () {
-                String name = nameController.text;
-                String? selectedDob = dob != null ? '${dob!.day}/${dob!.month}/${dob!.year}' : null;
-                String selectedGender = gender;
-                
+                Map <String, String> m = {
+                  'usrname' : usernameController.text,
+                  'pswd' : pswdController.text,
+                  'name' : nameController.text,
+                  'dob' : dob != null ? '${dob!.day}/${dob!.month}/${dob!.year}' : '',
+                  'gender' : gender,
+                  'chronic-conditions' : chronicConditionController.text,
+                  'medications' : medicationsController.text,
+                  'surgeries' : surgeriesController.text,
+                  'allergies' : allergiesController.text,
+                  'family-history' : familyHistoryController.text,
+                  'smoking' : smokingController.text,
+                  'alcohol' : alcoholController.text,
+                };
+
+                signup(m);
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -175,7 +170,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         TextButton(
                           child: const Text('OK'),
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            Navigator.pushReplacementNamed(context, '/');
                           },
                         ),
                       ],

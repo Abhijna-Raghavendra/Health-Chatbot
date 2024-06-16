@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LandingScreen extends StatelessWidget {
+class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
+
+  @override
+  State<LandingScreen> createState() => _LandingScreenState();
+}
+
+class _LandingScreenState extends State<LandingScreen> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController pswdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,27 +30,47 @@ class LandingScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18.sp
               ),),
-              SizedBox(height: 80.h,),
-              ElevatedButton(onPressed: (){}, 
-              child:  SizedBox(
+              SizedBox(height: 40.h,),
+              SizedBox(
                 width: 300.w,
+                child: TextFormField(
+                controller: usernameController,
+                decoration: const InputDecoration(labelText: 'Username'),
+                            ),
+              ),
+            SizedBox(
+              width: 300.w,
+              child: TextFormField(
+                controller: pswdController,
+                decoration: const InputDecoration(labelText: 'Password'),
+              ),
+            ),
+            SizedBox(height: 20.h,),
+              ElevatedButton(onPressed: (){
+                Navigator.pushReplacementNamed(context, '/home');
+              }, 
+              child:  SizedBox(
+                width: 260.w,
                 child: Center(
                   child: Text('SignIn',  style: TextStyle(
                     fontSize: 18.sp,
                   ),),
                 ),
               )),
-              ElevatedButton(onPressed: (){}, 
-              child:  SizedBox(
-                width: 300.w,
+              TextButton(onPressed: (){
+                Navigator.pushReplacementNamed(context, '/signup');
+              }, 
                 child: Center(
                   child: Text('SignUp',  style: TextStyle(
-                    fontSize: 18.sp,
+                    fontSize: 14.sp,
+                    decoration: TextDecoration.underline,
                   ),),
                 ),
-              )),
+              ),
           ],),
       ),
     );
   }
 }
+
+

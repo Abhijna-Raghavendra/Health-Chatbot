@@ -21,10 +21,10 @@ Future main() async {
               
               ),
               routes: {
-                //'/': (context) => const LandingScreen(),
-                '/': (context) => const SignupScreen(),
+                '/': (context) => const LandingScreen(),
+                '/signup': (context) => const SignupScreen(),
                 '/home': (context) => const HomeScreen(),
-                //'/chat': (context) => const ChatScreen(),
+                '/chat': (context) => const ChatScreen(),
               },
             )),
   );
