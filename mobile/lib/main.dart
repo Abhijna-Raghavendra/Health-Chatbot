@@ -21,7 +21,6 @@ Future main() async {
                   seedColor: Colors.white60,
                   brightness: Brightness.dark,
                 ),
-              
               ),
               routes: {
                 '/': (context) => const LandingScreen(),

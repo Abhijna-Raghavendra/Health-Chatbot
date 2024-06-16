@@ -7,17 +7,17 @@ class SignupScreen extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _SignupScreenState createState() =>
-      _SignupScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
 class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController pswdController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  DateTime? dob; 
+  DateTime? dob;
   String gender = '';
-  final TextEditingController chronicConditionController = TextEditingController();
+  final TextEditingController chronicConditionController =
+      TextEditingController();
   final TextEditingController surgeriesController = TextEditingController();
   final TextEditingController medicationsController = TextEditingController();
   final TextEditingController allergiesController = TextEditingController();
@@ -115,15 +115,18 @@ class _SignupScreenState extends State<SignupScreen> {
             SizedBox(height: 10.h),
             TextFormField(
               controller: chronicConditionController,
-              decoration: const InputDecoration(labelText: 'Chronic Conditions'),
+              decoration:
+                  const InputDecoration(labelText: 'Chronic Conditions'),
             ),
             TextFormField(
               controller: surgeriesController,
-              decoration: const InputDecoration(labelText: 'Surgeries/ Hospitalizations'),
+              decoration: const InputDecoration(
+                  labelText: 'Surgeries/ Hospitalizations'),
             ),
             TextFormField(
               controller: medicationsController,
-              decoration: const InputDecoration(labelText: 'Current Medications'),
+              decoration:
+                  const InputDecoration(labelText: 'Current Medications'),
             ),
             TextFormField(
               controller: allergiesController,
@@ -131,7 +134,8 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             TextFormField(
               controller: familyHistoryController,
-              decoration: const InputDecoration(labelText: 'Family Medical History'),
+              decoration:
+                  const InputDecoration(labelText: 'Family Medical History'),
             ),
             TextFormField(
               controller: smokingController,
@@ -139,24 +143,27 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             TextFormField(
               controller: alcoholController,
-              decoration: const InputDecoration(labelText: 'Alcohol Consumption'),
+              decoration:
+                  const InputDecoration(labelText: 'Alcohol Consumption'),
             ),
             SizedBox(height: 20.h),
             ElevatedButton(
               onPressed: () {
-                Map <String, String> m = {
-                  'usrname' : usernameController.text,
-                  'pswd' : pswdController.text,
-                  'name' : nameController.text,
-                  'dob' : dob != null ? '${dob!.day}/${dob!.month}/${dob!.year}' : '',
-                  'gender' : gender,
-                  'chronic-conditions' : chronicConditionController.text,
-                  'medications' : medicationsController.text,
-                  'surgeries' : surgeriesController.text,
-                  'allergies' : allergiesController.text,
-                  'family-history' : familyHistoryController.text,
-                  'smoking' : smokingController.text,
-                  'alcohol' : alcoholController.text,
+                Map<String, String> m = {
+                  'usrname': usernameController.text,
+                  'pswd': pswdController.text,
+                  'name': nameController.text,
+                  'dob': dob != null
+                      ? '${dob!.day}/${dob!.month}/${dob!.year}'
+                      : '',
+                  'gender': gender,
+                  'chronic-conditions': chronicConditionController.text,
+                  'medications': medicationsController.text,
+                  'surgeries': surgeriesController.text,
+                  'allergies': allergiesController.text,
+                  'family-history': familyHistoryController.text,
+                  'smoking': smokingController.text,
+                  'alcohol': alcoholController.text,
                 };
 
                 signup(m);

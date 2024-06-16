@@ -21,23 +21,22 @@ class _LandingScreenState extends State<LandingScreen> {
           children: [
             Text(
               'Health-Chatbot',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40.sp
-              ),),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40.sp),
+            ),
             Text(
               '<Insert amazing tagline here>',
-              style: TextStyle(
-                fontSize: 18.sp
-              ),),
-              SizedBox(height: 40.h,),
-              SizedBox(
-                width: 300.w,
-                child: TextFormField(
+              style: TextStyle(fontSize: 18.sp),
+            ),
+            SizedBox(
+              height: 40.h,
+            ),
+            SizedBox(
+              width: 300.w,
+              child: TextFormField(
                 controller: usernameController,
                 decoration: const InputDecoration(labelText: 'Username'),
-                            ),
               ),
+            ),
             SizedBox(
               width: 300.w,
               child: TextFormField(
@@ -45,32 +44,41 @@ class _LandingScreenState extends State<LandingScreen> {
                 decoration: const InputDecoration(labelText: 'Password'),
               ),
             ),
-            SizedBox(height: 20.h,),
-              ElevatedButton(onPressed: (){
-                Navigator.pushReplacementNamed(context, '/home');
-              }, 
-              child:  SizedBox(
-                width: 260.w,
-                child: Center(
-                  child: Text('SignIn',  style: TextStyle(
-                    fontSize: 18.sp,
-                  ),),
-                ),
-              )),
-              TextButton(onPressed: (){
+            SizedBox(
+              height: 20.h,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
+                child: SizedBox(
+                  width: 260.w,
+                  child: Center(
+                    child: Text(
+                      'SignIn',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ),
+                )),
+            TextButton(
+              onPressed: () {
                 Navigator.pushReplacementNamed(context, '/signup');
-              }, 
-                child: Center(
-                  child: Text('SignUp',  style: TextStyle(
+              },
+              child: Center(
+                child: Text(
+                  'SignUp',
+                  style: TextStyle(
                     fontSize: 14.sp,
                     decoration: TextDecoration.underline,
-                  ),),
+                  ),
                 ),
               ),
-          ],),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-

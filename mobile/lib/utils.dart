@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-dynamic getUri(String route){
-  return Uri.parse('http://192.168.68.103:5000/${route}');
+dynamic getUri(String route) {
+  return Uri.parse('http://192.168.68.103:5000/$route');
 }
 
 Future<String> chat(String message) async {
