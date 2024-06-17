@@ -6,6 +6,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String>? data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>?;
+    String? name = 'testing';
+    if (data != null) {
+      name = data['name'];
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Healthcare Chatbot'),
@@ -18,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                'User\'s Medical History:',
+                'Hey $name',
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10.h),
