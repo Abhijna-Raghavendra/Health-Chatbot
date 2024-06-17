@@ -21,6 +21,7 @@ def signup():
     family_history = data.get('family-history')
     smoking = data.get('smoking')
     alcohol = data.get('alcohol')
+    emergency_contact = data.get('emergency-contact')   
 
     hashed_password = generate_password_hash(password)
 
@@ -36,9 +37,10 @@ def signup():
         'allergies': allergies,
         'family_history': family_history,
         'smoking': smoking,
-        'alcohol': alcohol
+        'alcohol': alcohol,
+        'emergency_contact': emergency_contact
     }
 
     db.users.insert_one(user_data)
 
-    return jsonify({'message': 'Signup successful'}), 200
+    return jsonify({'message': 'Signup successful'}), 201
