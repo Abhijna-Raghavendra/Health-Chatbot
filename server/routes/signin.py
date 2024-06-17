@@ -29,6 +29,7 @@ def signin():
             'family_history' : user_data.get('family-history',''),
             'smoking' :user_data.get('smoking',''),
             'alcohol' : user_data.get('alcohol',''),
+            'emergency_contact' : user_data.get('emergency-contact','')
         }
         return jsonify(response), 200
     else:
