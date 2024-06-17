@@ -23,8 +23,8 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isListening = false;
   String _text = '';
   final TextEditingController _controller = TextEditingController();
-  late Map<String, String>? data =
-      ModalRoute.of(context)!.settings.arguments as Map<String, String>?;
+  late Map<String, dynamic>? data =
+      ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
 
   void _handleSendPressed(types.PartialText message) async {
     final textMessage = types.TextMessage(
@@ -145,9 +145,9 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-Future<String> response(String message, Map<String, String>? data) async {
+Future<String> response(String message, Map<String, dynamic>? data) async {
   String? uname = (data != null) ? data['username'] : '';
-  Map<String, String> m = {'query': message, 'username': uname!};
+  Map<String, dynamic> m = {'query': message};
   String r = await chat(m);
   return r;
 }

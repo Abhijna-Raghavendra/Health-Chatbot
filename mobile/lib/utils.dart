@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 dynamic getUri(String route) {
-  return Uri.parse('http://192.168.0.102:5000/$route');
+  return Uri.parse('http://192.168.68.100:5000/$route');
 }
 
-Future<String> chat(Map<String, String> m) async {
+Future<String> chat(Map<String, dynamic> m) async {
   final response = await http.post(
     getUri('/chat'),
     headers: <String, String>{
@@ -40,7 +40,7 @@ Future<String> signup(Map<String, String> m) async {
   }
 }
 
-Future<Map<String, String>> signin(Map<String, String> m) async {
+Future<Map<String, dynamic>> signin(Map<String, String> m) async {
   final response = await http.post(
     getUri('/signin'),
     headers: <String, String>{

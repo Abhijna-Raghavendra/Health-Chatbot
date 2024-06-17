@@ -21,6 +21,7 @@ def signin():
             'name': user_data.get('name', ''),
             'dob': user_data.get('dob', ''),
             'gender': user_data.get('gender', ''),
+            'emergency_contact': user_data.get('emergency_contact', ''),
             'chronic_conditions' : user_data.get('chronic-conditions',''),
             'medications' : user_data.get('medications',''),
             'surgeries' : user_data.get('surgeries',''),

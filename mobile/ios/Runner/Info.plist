@@ -51,5 +51,11 @@
 	<string>We need speech recognition to provide voice input functionality.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>We need access to your contacts to select an emergency contact.</string>
+	<key>NSApplicationQueriesSchemes</key>
+	<array>
+  	<string>tel</string>
+	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>We need access to your contacts for making calls.</string>
 </dict>
 </plist>
