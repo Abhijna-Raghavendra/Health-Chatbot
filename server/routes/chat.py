@@ -18,9 +18,9 @@ COLLECTION_NAME = "health"
 
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
-collection = db[COLLECTION_NAME]
-
-vector_search = MongoDBAtlasVectorSearch(text_chunks,embeddings,collection=collection)
+collection = db["health"]
+print (collection)
+vector_search = MongoDBAtlasVectorSearch(text_chunks,embeddings,)
 
 prompt_template = """
 Use the following pieces of information to answer the user's question.

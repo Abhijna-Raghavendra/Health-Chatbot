@@ -1,10 +1,11 @@
 from flask import request, jsonify
-import PyMongo
-from werkzeug import generate_password_hash
+from pymongo import MongoClient
+from werkzeug.security import generate_password_hash
 import os
 
-mongodb_uri = os.environ['MONGODB_URI']
-mongo = PyMongo()
+mongodb_uri = os.environ['MONGO_URI']
+client = MongoClient(mongodb_uri)
+db = client["rockingpenny4"]
 
 def signup():
     data = request.json  
@@ -38,6 +39,6 @@ def signup():
         'alcohol': alcohol
     }
 
-    mongo.db.users.insert_one(user_data)
+    db.users.insert_one(user_data)
 
     return jsonify({'message': 'Signup successful'}), 201

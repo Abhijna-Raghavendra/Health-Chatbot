@@ -30,11 +30,15 @@ def setup_mongodb():
 
     client = MongoClient(MONGO_URI)
     db = client[DB_NAME]
-    collection = db[COLLECTION_NAME]
+    collection = db["health"]
 
     return collection
 
 def store_in_mongodb(text_chunks, embeddings, collection):
+    if collection.count_documents({}) > 0:
+     print("Data already present in the database. Skipping storage.")
+     return None
+
     vector_search = MongoDBAtlasVectorSearch.from_documents(text_chunks, embeddings, collection=collection)
     return vector_search
 

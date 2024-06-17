@@ -1,17 +1,18 @@
 from flask import jsonify, request
-import PyMongo
+from pymongo import MongoClient
 from werkzeug.security import check_password_hash
 import os
-mongodb_uri = os.environ['MONGODB_URI']
 
-mongo = PyMongo()
+mongodb_uri = os.environ['MONGO_URI']
+client = MongoClient(mongodb_uri)
+db = client["rockingpenny4"]
 
 def signin():
     data = request.json  
     username = data.get('username')
     password = data.get('password')
 
-    user_data = mongo.db.users.find_one({'username': username})
+    user_data = db.users.find_one({'username': username})
 
     if user_data and check_password_hash(user_data['password'], password):
         response = {
@@ -27,8 +28,6 @@ def signin():
             'family_history' : user_data.get('family-history',''),
             'smoking' :user_data.get('smoking',''),
             'alcohol' : user_data.get('alcohol',''),
-
-
         }
         return jsonify(response), 200
     else:
