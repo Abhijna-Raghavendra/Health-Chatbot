@@ -45,4 +45,4 @@ def signup():
 
     db.users.insert_one(user_data)
 
-    return jsonify({'message': 'Signup successful'}), 201
+    return jsonify({'message': 'Signup successful'}), 200
