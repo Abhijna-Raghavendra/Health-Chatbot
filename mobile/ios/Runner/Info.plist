@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need your microphone to provide voice input functionality.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We need speech recognition to provide voice input functionality.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>We need access to your contacts to select an emergency contact.</string>
 </dict>
 </plist>

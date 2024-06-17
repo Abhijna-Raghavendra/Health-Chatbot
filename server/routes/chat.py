@@ -55,5 +55,3 @@ def chat():
     user_input = data.get('query', '')
     response = chat_response(user_input)
     return jsonify(response)
-
-

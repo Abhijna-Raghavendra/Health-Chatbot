@@ -1,7 +1,7 @@
-from flask import Flask, render_template
-from routes.chat import chat
-from routes.signin import signin
-from routes.signup import signup
+from flask import Flask, render_template, request
+from routes.chat import chat_response
+from routes.signin import signin_response
+from routes.signup import signup_response
 
 app = Flask(__name__)
 
@@ -11,15 +11,22 @@ def index():
 
 @app.route('/signin', methods=['POST'])
 def signin():
-    return signin()
+    data = request.json
+    print(data)
+    response = signin_response(data)
+    return response
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    return signup()
+    data = request.json
+    response = signup_response(data)
+    return response
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    return chat()
+    data = request.json
+    response = chat_response(data['message'])
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
