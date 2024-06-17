@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/utils.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -48,8 +49,14 @@ class _LandingScreenState extends State<LandingScreen> {
               height: 20.h,
             ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home');
+                onPressed: () async {
+                  Map<String, String> m = {
+                    "username": usernameController.text,
+                    "password": pswdController.text,
+                  };
+                  Map<String, String> r = await signin(m);
+                  Navigator.pushReplacementNamed(context, '/home',
+                      arguments: r);
                 },
                 child: SizedBox(
                   width: 260.w,

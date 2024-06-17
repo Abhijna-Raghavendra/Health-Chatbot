@@ -12,6 +12,7 @@ def index():
 @app.route('/signin', methods=['POST'])
 def signin():
     data = request.json
+    print(data)
     response = signin_response(data)
     return response
 

@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 dynamic getUri(String route) {
-  return Uri.parse('http://192.168.68.103:5000/$route');
+  return Uri.parse('http://192.168.68.100:5000/$route');
 }
 
 Future<String> chat(String message) async {
@@ -42,7 +42,7 @@ Future<String> signup(Map<String, String> m) async {
   }
 }
 
-Future<String> signin(Map<String, String> m) async {
+Future<Map<String, String>> signin(Map<String, String> m) async {
   final response = await http.post(
     getUri('/signin'),
     headers: <String, String>{
@@ -52,7 +52,7 @@ Future<String> signin(Map<String, String> m) async {
   );
 
   if (response.statusCode == 200) {
-    return response.body;
+    return json.decode(response.body);
   } else {
     debugPrint(response.statusCode.toString());
     throw Exception('Failed to load album');
