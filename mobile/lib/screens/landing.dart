@@ -54,8 +54,9 @@ class _LandingScreenState extends State<LandingScreen> {
                     "username": usernameController.text,
                     "password": pswdController.text,
                   };
-                  //Map<String, String> r = await signin(m);
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Map<String, String> r = await signin(m);
+                  Navigator.pushReplacementNamed(context, '/home',
+                      arguments: r);
                 },
                 child: SizedBox(
                   width: 260.w,

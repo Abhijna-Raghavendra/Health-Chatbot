@@ -244,6 +244,15 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/');
+          },
+        ),
+        title: const Text('Health-Chatbot'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.r),
         child: Column(
@@ -375,7 +384,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             SizedBox(height: 20.h),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 Map<String, String> m = {
                   'usrname': usernameController.text,
                   'pswd': pswdController.text,
@@ -396,24 +405,44 @@ class _SignupScreenState extends State<SignupScreen> {
                           ? _emergencyContact!.phones!.first.value ?? ''
                           : '',
                 };
-                signup(m);
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text('Submitted'),
-                      content: const Text('Signup successful!'),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const Text('OK'),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/');
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
+                String? r = await signup(m);
+                if (r == 'Signup successful') {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Submitted'),
+                        content: const Text('Signup successful!'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, '/');
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Error'),
+                        content: const Text('Signup failed!'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, '/');
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               child: const Text('Submit'),
             ),
