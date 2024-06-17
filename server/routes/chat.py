@@ -1,3 +1,3 @@
-def chat():
-    # Add chat here
-    return 
+def chat_response(message):
+    # Add chat logic here
+    return message

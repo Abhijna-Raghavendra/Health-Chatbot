@@ -4,8 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health-Chatbot</title>
+    <!-- Link to Ubuntu Mono font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+
+    <!-- Tailwind CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <style>
+        /* Custom style for dark mode */
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+        }
+        .dark-mode {
+            background-color: #1a202c; /* Dark background color */
+            color: #e2e8f0; /* Light text color */
+            min-height: 100vh; /* Ensure full height */
+            display: flex;
+            flex-direction: column;
+        }
+        .dark-mode .text-gray-600 {
+            color: #cbd5e0; /* Adjusted text color for dark mode */
+        }
+        .content {
+            flex-grow: 1; /* Take up remaining space */
+            padding-top: 40px; /* Add padding on top */
+        }
+        .footer {
+            flex-shrink: 0; /* Prevent footer from growing */
+            text-align: center;
+            padding: 10px; /* Add padding to footer */
+        }
+    </style>
 </head>
-<body>
-    <h1>Welcome to the Health-chatbot</h1>
+<body class="dark-mode">
+    <div class="container mx-auto p-4 content">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-blue-400 mb-2">Health-Chatbot</h1>
+            <p class="italic text-gray-400 mb-4">Amazing tagline comes here</p>
+        </div>
+
+        <div class="max-w-lg mx-auto bg-gray-800 rounded-lg shadow-lg p-6 mt-6 text-center">
+            <p class="text-lg text-gray-300">Welcome to Health-Chatbot, your go-to resource for health-related queries.</p>
+            <p class="text-lg text-gray-300 mt-4">Download our Mobile app to get started:</p>
+            <p class="mt-4"><a href="//link-to-your-apk-file" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block">Download APK</a></p>
+        </div>
+    </div>
+
+    <div class="footer bg-gray-900 text-gray-600 text-sm">
+        <p><a href="https://github.com/Abhijna-Raghavendra/Health-Chatbot" target="_blank" class="underline text-gray-400">GitHub Repository</a> | &copy; 2024 Doctor-AI</p>
+    </div>
 </body>
 </html>
+
+

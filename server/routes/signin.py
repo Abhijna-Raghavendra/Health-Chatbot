@@ -1,3 +1,3 @@
-def signin():
+def signin_response(data):
     # Add signin here
-    return 
+    return data['username']
