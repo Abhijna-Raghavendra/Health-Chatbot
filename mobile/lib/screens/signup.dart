@@ -269,6 +269,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             TextFormField(
               controller: pswdController,
+              obscureText: true,
               decoration: const InputDecoration(labelText: 'Password'),
             ),
             TextFormField(
@@ -386,7 +387,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ElevatedButton(
               onPressed: () async {
                 Map<String, String> m = {
-                  'usrname': usernameController.text,
+                  'username': usernameController.text,
                   'pswd': pswdController.text,
                   'name': nameController.text,
                   'dob': dob != null

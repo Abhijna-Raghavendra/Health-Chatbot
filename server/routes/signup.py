@@ -14,6 +14,7 @@ def signup():
     name = data.get('name')
     dob = data.get('dob')
     gender = data.get('gender')
+    contact = data.get('emergency-contact')
     chronic_conditions = data.get('chronic-conditions')
     medications = data.get('medications')
     surgeries = data.get('surgeries')
@@ -31,6 +32,7 @@ def signup():
         'name': name,
         'dob': dob,
         'gender': gender,
+        'emergency_contact': contact,
         'chronic_conditions': chronic_conditions,
         'medications': medications,
         'surgeries': surgeries,

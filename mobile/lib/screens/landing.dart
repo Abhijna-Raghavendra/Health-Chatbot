@@ -41,6 +41,7 @@ class _LandingScreenState extends State<LandingScreen> {
             SizedBox(
               width: 300.w,
               child: TextFormField(
+                obscureText: true,
                 controller: pswdController,
                 decoration: const InputDecoration(labelText: 'Password'),
               ),
@@ -54,7 +55,8 @@ class _LandingScreenState extends State<LandingScreen> {
                     "username": usernameController.text,
                     "password": pswdController.text,
                   };
-                  Map<String, String> r = await signin(m);
+                  Map<String, dynamic> r = await signin(m);
+                  print(r);
                   Navigator.pushReplacementNamed(context, '/home',
                       arguments: r);
                 },
